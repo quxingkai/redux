@@ -6,6 +6,7 @@ import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import reducer from './reducers'
 import App from './containers/App'
+import { generateHttpInterface } from './actions'
 
 const middleware = [ thunk ]
 if (process.env.NODE_ENV !== 'production') {
@@ -16,6 +17,8 @@ const store = createStore(
   reducer,
   applyMiddleware(...middleware)
 )
+
+store.dispatch(generateHttpInterface('https://example.com/api'))
 
 render(
   <Provider store={store}>
