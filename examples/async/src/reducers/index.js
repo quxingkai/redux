@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT,
-  REQUEST_POSTS, RECEIVE_POSTS
+  REQUEST_POSTS, RECEIVE_POSTS, GENERATE_HTTP_INTERFACE
 } from '../actions'
 
 const selectedSubreddit = (state = 'reactjs', action) => {
@@ -48,6 +48,7 @@ const postsBySubreddit = (state = { }, action) => {
     case INVALIDATE_SUBREDDIT:
     case RECEIVE_POSTS:
     case REQUEST_POSTS:
+    case GENERATE_HTTP_INTERFACE:
       return {
         ...state,
         [action.subreddit]: posts(state[action.subreddit], action)
